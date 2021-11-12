@@ -1,1 +1,35 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/scss/bootstrap.scss";
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  padding-bottom: 20px;
+}
+
+.form-row {
+  margin-bottom: 20px;
+
+  label {
+    width: 100%;
+  }
+
+  textarea {
+    resize: none;
+  }
+
+  input,
+  textarea {
+    &.invalid {
+      border-color: red;
+    }
+
+    &.disable {
+      opacity: 0.5;
+      pointer-events: none;
+    }
+  }
+}

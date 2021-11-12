@@ -1,0 +1,167 @@
+<div class="add-door-form-wrp">
+    <div class="card bg-light">
+        <div class="card-header">
+            <h2>Door Detail Form</h2>
+        </div>
+        <div class="card-body">
+            <form #form="ngForm" (submit)="onSubmit(form)" autocomplete="off">
+
+                <div class="form-row row">
+                    <div class="form-group col-12 col-md-6">
+                        <label class="col-form-label">Name</label>
+                        <input type="text" class="form-control" name="name" placeholder="Enter Door Name" required
+                            #name="ngModel" [(ngModel)]="service.formData.name"
+                            [class.invalid]="name.invalid && name.touched">
+                    </div>
+
+                    <div class="form-group col-12 col-md-6">
+                        <label class="col-form-label">Room</label>
+                        <input type="text" class="form-control" name="room" placeholder="Enter Door Room" required
+                            #room="ngModel" [(ngModel)]="service.formData.room"
+                            [class.invalid]="room.invalid && room.touched">
+                    </div>
+                </div>
+
+                <div class="form-row row">
+                    <div class="form-group col-12 col-md-6">
+                        <label class="col-form-label">Building</label>
+                        <input type="text" class="form-control" name="building" placeholder="Enter Door Building"
+                            required #building="ngModel" [(ngModel)]="service.formData.building"
+                            [class.invalid]="building.invalid && building.touched">
+                    </div>
+
+                    <div class="form-group col-12 col-md-6">
+                        <label class="col-form-label">Floor</label>
+                        <input type="text" class="form-control" name="floor" placeholder="Enter Door Floor" required
+                            #floor="ngModel" [(ngModel)]="service.formData.floor"
+                            [class.invalid]="floor.invalid && floor.touched">
+                    </div>
+                </div>
+
+                <div class="form-row row">
+                    <div class="form-group col-12 col-md-6">
+                        <label class="col-form-label">Height</label>
+                        <input type="text" class="form-control" name="height" placeholder="Enter Door Height" required
+                            #height="ngModel" [(ngModel)]="service.formData.height"
+                            [class.invalid]="height.invalid && height.touched">
+                    </div>
+
+                    <div class="form-group col-12 col-md-6">
+                        <label class="col-form-label">Width</label>
+                        <input type="text" class="form-control" name="width" placeholder="Enter Door Width" required
+                            #width="ngModel" [(ngModel)]="service.formData.width"
+                            [class.invalid]="width.invalid && width.touched">
+                    </div>
+                </div>
+
+                <div class="form-row row">
+                    <div class="form-group col-12">
+                        <h5>Lock Details</h5>
+                    </div>
+                    <div class="form-group col-12 col-md-3">
+                        <label class="col-form-label">Type</label>
+                        <input type="text" class="form-control" name="lockType" placeholder="Enter Door Lock Type"
+                            required #lockType="ngModel" [(ngModel)]="service.formData.lock.type"
+                            [class.invalid]="lockType.invalid && lockType.touched"
+                            [class.disable]="service.formData.lock.isCompleted">
+                    </div>
+
+                    <div class="form-group col-12 col-md-3">
+                        <label class="col-form-label">Quantity</label>
+                        <input type="number" class="form-control" name="lockQty" placeholder="Enter Door Lock Quantity"
+                            required #lockQty="ngModel" [(ngModel)]="service.formData.lock.qty"
+                            [class.invalid]="lockQty.invalid && lockQty.touched"
+                            [class.disable]="service.formData.lock.isCompleted">
+                    </div>
+
+                    <div class="form-group col-12 col-md-3">
+                        <label class="col-form-label">Material</label>
+                        <input type="text" class="form-control" name="material" placeholder="Enter Door Lock Material"
+                            required #material="ngModel" [(ngModel)]="service.formData.lock.material"
+                            [class.invalid]="material.invalid && material.touched"
+                            [class.disable]="service.formData.lock.isCompleted">
+                    </div>
+
+                    <div class="form-group col-12 col-md-3">
+                        <label class="col-form-label">Completed</label>
+                        <input type="checkbox" class="form-check-input" name="lockCompleted" #lockCompleted="ngModel"
+                            [(ngModel)]="service.formData.lock.isCompleted"
+                            [class.disable]="service.formData.lock.isCompleted"
+                            [checked]="service.formData.lock.isCompleted">
+                    </div>
+                </div>
+
+                <div class="form-row row">
+                    <div class="form-group col-12">
+                        <h5>Cyclinder Details</h5>
+                    </div>
+                    <div class="form-group col-12 col-md-3">
+                        <label class="col-form-label">Type</label>
+                        <input type="text" class="form-control" name="cyclinderType"
+                            placeholder="Enter Door Cyclinder Type" required #cyclinderType="ngModel"
+                            [(ngModel)]="service.formData.cyclinder.type"
+                            [class.invalid]="cyclinderType.invalid && cyclinderType.touched"
+                            [class.disable]="service.formData.cyclinder.isCompleted">
+                    </div>
+
+                    <div class="form-group col-12 col-md-3">
+                        <label class="col-form-label">Quantity</label>
+                        <input type="number" class="form-control" name="cyclinderQty"
+                            placeholder="Enter Door Cyclinder Quantity" required #cyclinderQty="ngModel"
+                            [(ngModel)]="service.formData.cyclinder.qty"
+                            [class.invalid]="cyclinderQty.invalid && cyclinderQty.touched"
+                            [class.disable]="service.formData.cyclinder.isCompleted">
+                    </div>
+
+                    <div class="form-group col-12 col-md-3">
+                        <label class="col-form-label">Material</label>
+                        <input type="text" class="form-control" name="cyclinderMaterial"
+                            placeholder="Enter Door Cyclinder Material" required #cyclinderMaterial="ngModel"
+                            [(ngModel)]="service.formData.cyclinder.material"
+                            [class.invalid]="cyclinderMaterial.invalid && cyclinderMaterial.touched"
+                            [class.disable]="service.formData.cyclinder.isCompleted" />
+                    </div>
+
+                    <div class="form-group col-12 col-md-3">
+                        <label class="col-form-label">Completed</label>
+                        <input type="checkbox" class="form-check-input" name="cyclinderCompleted"
+                            #cyclinderCompleted="ngModel" [(ngModel)]="service.formData.cyclinder.isCompleted"
+                            [class.disable]="service.formData.cyclinder.isCompleted"
+                            [checked]="service.formData.cyclinder.isCompleted" />
+                    </div>
+                </div>
+
+                <div class="form-row row">
+                    <div class="form-group col-12">
+                        <h5>Frame Details</h5>
+                    </div>
+
+                    <div class="form-group col-12 col-md-6">
+                        <label class="col-form-label">Type</label>
+                        <input type="text" class="form-control" name="frameType" placeholder="Enter Frame Type" required
+                            #frameType="ngModel" [(ngModel)]="service.formData.frame.type"
+                            [class.invalid]="frameType.invalid && frameType.touched"
+                            [class.disable]="service.formData.frame.isCompleted">
+                    </div>
+
+                    <div class="form-group col-12 col-md-6">
+                        <label class="col-form-label">Completed</label>
+                        <input type="checkbox" class="form-check-input" name="frameCompleted" #frameCompleted="ngModel"
+                            [(ngModel)]="service.formData.frame.isCompleted"
+                            [class.disable]="service.formData.frame.isCompleted"
+                            [checked]="service.formData.frame.isCompleted">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-10">
+                        <button type="submit" class="btn btn-primary btn-lg" [disabled]="form.invalid || isLoading">
+                            <span *ngIf="!isLoading">SUBMIT</span>
+                            <span *ngIf="isLoading">SUBMITTING</span>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

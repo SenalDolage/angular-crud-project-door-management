@@ -1,0 +1,117 @@
+<div class="door-listing-wrp">
+    <div class="row" *ngIf="doorsByProject.length > 0; else ifNoDoorsTemplate">
+        <div class="col-12 col-md-6 col-lg-4 card-wrp" *ngFor="let door of doorsByProject; trackBy: trackByFn">
+            <div class="card bg-light">
+                <div class="card-body">
+                    <div class="item-row">
+                        <h5>Id</h5>
+                        <h6>{{door.id}}</h6>
+                    </div>
+
+                    <div class="item-row">
+                        <h5>Name</h5>
+                        <h6>{{door.name}}</h6>
+                    </div>
+
+                    <div class="item-row">
+                        <h5>Room</h5>
+                        <h6>{{door.room}}</h6>
+                    </div>
+
+                    <div class="item-row">
+                        <h5>Building</h5>
+                        <h6>{{door.building}}</h6>
+                    </div>
+
+                    <div class="item-row">
+                        <h5>Floor</h5>
+                        <h6>{{door.floor}}</h6>
+                    </div>
+
+                    <div class="item-row">
+                        <h5>Height</h5>
+                        <h6>{{door.height}}</h6>
+                    </div>
+
+                    <div class="item-row">
+                        <h5>Width</h5>
+                        <h6>{{door.width}}</h6>
+                    </div>
+
+                    <div class="mb-3">
+                        <h4>Lock Details</h4>
+                        <div class="item-row">
+                            <h5>Type</h5>
+                            <h6>{{door.lock.type}}</h6>
+                        </div>
+                        <div class="item-row">
+                            <h5>Qty</h5>
+                            <h6>{{door.lock.qty}}</h6>
+                        </div>
+                        <div class="item-row">
+                            <h5>Material</h5>
+                            <h6>{{door.lock.material}}</h6>
+                        </div>
+                        <div class="item-row">
+                            <h5>Status</h5>
+                            <span class="badge badge-success" *ngIf="door.lock.isCompleted">Done</span>
+                            <span class="badge badge-secondary" *ngIf="!door.lock.isCompleted">In Progress</span>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <h4>Cylinder Details</h4>
+                        <div class="item-row">
+                            <h5>Type</h5>
+                            <h6>{{door.cyclinder.type}}</h6>
+                        </div>
+                        <div class="item-row">
+                            <h5>Qty</h5>
+                            <h6>{{door.cyclinder.qty}}</h6>
+                        </div>
+                        <div class="item-row">
+                            <h5>Material</h5>
+                            <h6>{{door.cyclinder.material}}</h6>
+                        </div>
+                        <div class="item-row">
+                            <h5>Status</h5>
+                            <span class="badge badge-success" *ngIf="door.cyclinder.isCompleted">Done</span>
+                            <span class="badge badge-secondary" *ngIf="!door.cyclinder.isCompleted">In Progress</span>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <h4>Frame Details</h4>
+                        <div class="item-row">
+                            <h5>Type</h5>
+                            <h6>{{door.frame.type}}</h6>
+                        </div>
+                        <div class="item-row">
+                            <h5>Status</h5>
+                            <span class="badge badge-success" *ngIf="door.frame.isCompleted">Done</span>
+                            <span class="badge badge-secondary" *ngIf="!door.frame.isCompleted">In Progress</span>
+                        </div>
+                    </div>
+
+                    <div class="btn-row row justify-content-center mt-5">
+                        <div class="col-2">
+                            <a class="btn btn-primary" routerLink="/door/form" [queryParams]="{door: door.id}">Edit</a>
+                        </div>
+                        <div class="col-2"
+                            *ngIf="!door.lock.isCompleted && !door.cyclinder.isCompleted && !door.frame.isCompleted">
+                            <button class="btn btn-danger" (click)="onDelete(door.id)">
+                                Delete
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <ng-template #ifNoDoorsTemplate>
+        <h4>No Doors have been added to this Project</h4>
+        <br />
+        <h5>To add a Door click <a routerLink="/door/form" [queryParams]="{project: projId}">here.</a></h5>
+    </ng-template>
+</div>
