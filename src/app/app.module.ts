@@ -4,9 +4,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './shared/header/header.component';
+import { HeaderComponent, NotFoundComponent } from './shared';
 import { ProjectModule } from './project/project.module';
-import { NotFoundComponent } from './shared/not-found/not-found.component';
 
 @NgModule({
   declarations: [AppComponent, HeaderComponent, NotFoundComponent],

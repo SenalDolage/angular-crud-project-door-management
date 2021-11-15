@@ -19,10 +19,11 @@ export class FormComponent implements OnInit {
     private toaster: ToastrService,
     private route: ActivatedRoute,
   ) {
-   this.projId = this.route.snapshot.paramMap.get('id');
+  
   }
 
   ngOnInit(): void {
+    this.projId = this.route.snapshot.paramMap.get('id');
     this.isLoading = false;
     this.loadProject();
   }
@@ -31,10 +32,9 @@ export class FormComponent implements OnInit {
     if (this.projId) {
       this.service.getProjectById(this.projId).subscribe(
         (res) => {
-          this.service.formData = Object.assign({}, res);
+          this.service.formData = res;
         },
-        (err) => {
-          console.error(err);
+        () => {
           this.toaster.error('', 'Error loading Project details');
         }
       );
@@ -52,13 +52,12 @@ export class FormComponent implements OnInit {
   onInsertProject(form: NgForm) {
     this.isLoading = true;
     this.service.postProject().subscribe(
-      (res) => {
+      () => {
         this.resetForm(form);
         this.toaster.success('Submitted Successfully', 'New Project Added');
         this.isLoading = false;
       },
-      (err) => {
-        console.error(err);
+      () => {
         this.toaster.error('Submition Failed', 'Error adding new Project');
         this.isLoading = false;
       }
@@ -69,12 +68,11 @@ export class FormComponent implements OnInit {
     this.isLoading = true;
     if (this.projId) {
       this.service.updateProject(this.projId).subscribe(
-        (res) => {
+        () => {
           this.toaster.success('Submitted Successfully', 'Project Updated');
           this.isLoading = false;
         },
-        (err) => {
-          console.error(err);
+        () => {
           this.toaster.error('Submition Failed', 'Error updating Project');
           this.isLoading = false;
         }

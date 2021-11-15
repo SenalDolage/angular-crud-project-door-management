@@ -21,14 +21,13 @@ export class FormComponent implements OnInit {
     private toaster: ToastrService,
     private route: ActivatedRoute,
     private location: Location
-  ) {
+  ) {}
+
+  ngOnInit(): void {
     this.route.queryParams.subscribe((params) => {
       this.projId = params['project'];
       this.doorId = params['door'];
     });
-  }
-
-  ngOnInit(): void {
     this.isLoading = false;
     this.loadingDoorData();
   }
@@ -39,8 +38,7 @@ export class FormComponent implements OnInit {
         (res) => {
           this.service.formData = res;
         },
-        (err) => {
-          console.error(err);
+        () => {
           this.toaster.error('', 'Error loading Door data');
         }
       );
@@ -59,14 +57,13 @@ export class FormComponent implements OnInit {
     this.isLoading = true;
     if (this.projId) {
       this.service.postDoor(this.projId).subscribe(
-        (res) => {
+        () => {
           this.resetForm(form);
           this.toaster.success('Submitted Successfully', 'New Door Added');
           this.isLoading = false;
           this.location.back();
         },
-        (err) => {
-          console.error(err);
+        () => {
           this.toaster.error('Submition Failed', 'Error adding new Door');
           this.isLoading = false;
         }
@@ -84,7 +81,6 @@ export class FormComponent implements OnInit {
           this.location.back();
         },
         (err) => {
-          console.error(err);
           this.toaster.error('Submition Failed', 'Error updating Door');
           this.isLoading = false;
         }

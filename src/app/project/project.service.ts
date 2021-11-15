@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
-import { catchError, } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 import * as moment from 'moment';
 
 import { Project } from './project.model';
@@ -18,17 +17,12 @@ export class ProjectService {
 
   /**
    * Get all Projects
-   * 
+   *
    * @return {*}  {Observable<Project[]>}
    * @memberof ProjectService
    */
   getAllProjects(): Observable<Project[]> {
-    return this.http.get<Project[]>(this.baseURL).pipe(
-      catchError(err => {
-        console.error( err.message);
-        return throwError(err);
-    }),
-    );
+    return this.http.get<Project[]>(this.baseURL);
   }
 
   /**

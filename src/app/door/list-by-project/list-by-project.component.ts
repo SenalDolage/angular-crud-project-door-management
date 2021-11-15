@@ -34,8 +34,8 @@ export class ListByProjectComponent implements OnInit {
           (door) => door.projectId === this.projId
         );
       },
-      (err) => {
-        console.error(err);
+      () => {
+        this.toaster.error('', 'Error loading Project Doors');
       }
     );
   }
@@ -43,12 +43,11 @@ export class ListByProjectComponent implements OnInit {
   onDelete(doorId: string) {
     if (confirm('Are you sure you want to delete this Door')) {
       this.service.deleteDoor(doorId).subscribe(
-        (res) => {
+        () => {
           this.loadProjectDoors();
           this.toaster.warning('', 'Door deleted');
         },
-        (err) => {
-          console.error(err);
+        () => {
           this.toaster.error('', 'Error deleting Door');
         }
       );

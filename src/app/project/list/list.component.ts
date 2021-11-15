@@ -29,8 +29,7 @@ export class ListComponent implements OnInit {
           return dateB - dateA;
         });
       },
-      (err) => {
-        console.error(err);
+      () => {
         this.toaster.error('', 'Error retrieving Projects');
       }
     );
@@ -40,12 +39,11 @@ export class ListComponent implements OnInit {
   deleteProject(id: string) {
     if (confirm('Are you sure you want to delete this Project')) {
       this.service.deleteProject(id).subscribe(
-        (res) => {
+        () => {
           this.refreshProjectList();
           this.toaster.warning('', 'Project Deleted');
         },
-        (err) => {
-          console.error(err);
+        () => {
           this.toaster.error('', 'Error deleting Project');
         }
       );
