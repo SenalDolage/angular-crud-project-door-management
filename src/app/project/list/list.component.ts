@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
+import { startWith } from 'rxjs/operators';
 
 import { Project } from '../project.model';
 import { ProjectService } from '../project.service';
@@ -23,16 +24,23 @@ export class ListComponent implements OnInit {
     this.loading = true;
     this.service.getAllProjects().subscribe(
       (res) => {
+        localStorage['httpCache'] = JSON.stringify(res);
+
         this.projects = res.sort(function (a: Project, b: Project) {
           var dateA: any = new Date(a.modifiedDate);
           var dateB: any = new Date(b.modifiedDate);
-          return dateB - dateA;
+
+          return dateA - dateB;
         });
       },
       () => {
         this.toaster.error('', 'Error retrieving Projects');
       }
     );
+
+    this.service
+      .getAllProjects()
+      .pipe(startWith(JSON.parse(localStorage['httpCache'] || '[]')));
     this.loading = false;
   }
 
