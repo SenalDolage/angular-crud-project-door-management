@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 
-import { Door } from '../door.model';
+import { Door } from '../../models';
 import { DoorService } from '../door.service';
 
 @Component({

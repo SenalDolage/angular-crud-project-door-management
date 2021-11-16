@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import * as moment from 'moment';
 
-import { Project } from './project.model';
+import { Project } from '../models';
 import { environment } from 'src/environments/environment';
 
 @Injectable({

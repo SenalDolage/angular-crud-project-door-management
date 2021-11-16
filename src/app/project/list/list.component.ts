@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { startWith } from 'rxjs/operators';
 
-import { Project } from '../project.model';
+import { Project } from '../../models';
 import { ProjectService } from '../project.service';
 
 @Component({
