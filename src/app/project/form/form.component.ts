@@ -3,7 +3,7 @@ import { NgForm } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 
-import { ProjectService } from '../project.service';
+import { ProjectService } from '../../services';
 
 @Component({
   selector: 'app-form',
@@ -13,14 +13,12 @@ import { ProjectService } from '../project.service';
 export class FormComponent implements OnInit {
   isLoading: boolean = false;
   projId: string | null = '';
-  
+
   constructor(
     public service: ProjectService,
     private toaster: ToastrService,
-    private route: ActivatedRoute,
-  ) {
-  
-  }
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
     this.projId = this.route.snapshot.paramMap.get('id');

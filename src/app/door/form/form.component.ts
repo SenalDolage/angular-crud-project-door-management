@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Location } from '@angular/common';
 
-import { DoorService } from '../door.service';
+import { DoorService } from '../../services';
 
 @Component({
   selector: 'app-form',

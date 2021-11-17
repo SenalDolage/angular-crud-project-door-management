@@ -9,10 +9,10 @@ import { Door } from '../models';
   providedIn: 'root',
 })
 export class DoorService {
-  constructor(private http: HttpClient) {}
-
   formData: Door = new Door();
   readonly baseURL = `${environment.apiUrl}/door`;
+
+  constructor(private http: HttpClient) {}
 
   /**
    * Get all Doors

@@ -10,10 +10,10 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root',
 })
 export class ProjectService {
-  constructor(private http: HttpClient) {}
-
   formData: Project = new Project();
   readonly baseURL = `${environment.apiUrl}/project`;
+
+  constructor(private http: HttpClient) {}
 
   /**
    * Get all Projects

@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 
 import { Door } from '../../models';
-import { DoorService } from '../door.service';
+import { DoorService } from '../../services';
 
 @Component({
   selector: 'app-list-by-project',
